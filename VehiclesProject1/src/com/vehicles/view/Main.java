@@ -1,23 +1,44 @@
 package com.vehicles.view;
-//ARREGLAR FORMATO HORA
+
 import java.lang.ModuleLayer.Controller;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import com.vehicles.application.UserController;
 import com.vehicles.application.VehicleController;
+import com.vehicles.project.Bike;
 import com.vehicles.project.Car;
 import com.vehicles.project.Driver;
+import com.vehicles.project.License;
 import com.vehicles.project.Owner;
 import com.vehicles.project.Person;
+import com.vehicles.project.Truck;
 import com.vehicles.project.Vehicle;
 import com.vehicles.project.Wheel;
-
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
+		Date date1 = new Date(); Date date2 = new Date(); Date date3 = new Date(); Date date4 = new Date();
+		License license1= new License("234565L", 'a', "Valeria Lavin", "27/02/2025"); License license2 = new License ("23454545L", 'b', "Manuel José González", "21/02/2026"); 
+		License license3 = new License("23345L", 'c', "Eduardo Gómez", "27/03/2020"); License license4 = new License("277765L", 'c', "Rosa Díaz", "20/03/2035");
+		UserController usController = new UserController();
+		VehicleController vehicleController = new VehicleController();
+
+		Owner owner1 = new Owner("Valeria", "Lavín", date1, license1, "si", "no");
+		Owner owner2 = new Owner("Manuel José", "Gonzáliez", date2, license2, "si", "si");
+		Owner owner3 = new Owner("Eduardo", "Gómez", date3, license3, "no", "no");
+		Driver driver1 = new Driver("Rosa", "Diáz", date4, license4);
+		usController.addUser(owner1); usController.addUser(owner2); usController.addUser(owner3); usController.addUser(driver1);
+		Bike bike1 = new Bike("1234LG", "Renault", "rojo", owner1);
+		Car car1 = new Car("1234LG", "Renault", "rojo", owner2);
+		Truck truck1 = new Truck("1234LG", "Renault", "rojo", owner3);	
+		bike1.addPerson(owner1); car1.addPerson(owner2); truck1.addPerson(owner3); bike1.addPerson(driver1);
+		vehicleController.addVehicle(bike1); vehicleController.addVehicle(car1); vehicleController.addVehicle(truck1);
+		
 		Scanner sc = new Scanner(System.in);
 		int option; boolean fin = false;
 
@@ -78,7 +99,7 @@ UserController usController = new UserController();
 public static void usersMenu() throws Exception {
 Scanner sc = new Scanner(System.in);
 int option; boolean fin = false;
-Owner owner; Driver driver;
+Owner owner; Driver driver; String answ;
 VehicleController controller = new VehicleController();
 UserController usController = new UserController();
 String usersList;
@@ -92,11 +113,16 @@ String usersList;
 				fin = true;
 				break;
 			case 1:
-				//dar opción de añadir el vehículo al conductor? SI NO PONER SIN VEHICULO ASIGNADO EN EL TOSTRING
 				owner = usController.createOwner();
+				System.out.println("¿Desea asignar un vehículo al titular?");
+				answ = sc.nextLine();
+				if(answ.equalsIgnoreCase("si")) {
+				 controller.newVehicle(owner);	
+				} else {
+					System.out.println("Titular sin vehículo asignado.");
+				}
 				break;
 			case 2:
-				//pasar a otra funcion aparte?
 				driver = usController.createDriver();
 				addDriver(driver);
 				

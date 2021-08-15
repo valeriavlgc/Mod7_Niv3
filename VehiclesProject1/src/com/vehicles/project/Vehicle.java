@@ -3,7 +3,7 @@ package com.vehicles.project;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Vehicle {
+public class Vehicle {
 	
 	protected String plate;
 	protected String brand;

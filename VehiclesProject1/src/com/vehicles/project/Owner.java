@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Owner extends Person {
 	
-	protected String garage; //boolean?
+	protected String garage;
 	protected String insurance;
 	
 	

@@ -206,10 +206,15 @@ public class VehicleController {
 			return setWheels;
 		}	
 
+	public void addVehicle(Vehicle vehicle) {
+		vehicles.add(vehicle);
+	}
+	
     public void getAllVehicles() {
     int i = 1;	
 		for (Vehicle e : vehicles) {
 			System.out.println(i + ".-" + e.toString());
+			i++;
 		}
     }
     

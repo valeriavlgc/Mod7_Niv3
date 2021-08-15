@@ -26,7 +26,7 @@ public class UserController {
 		name = sc.nextLine();
 		System.out.println("Introduzca apellido");
 		surname = sc.nextLine();
-		System.out.println("Introduzca fecha de nacimiento");
+		System.out.println("Introduzca fecha de nacimiento (dd/MM/yyyy)");
 		dateText = sc.nextLine();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		birthdate = sdf.parse(dateText);
@@ -53,7 +53,7 @@ public class UserController {
 			name = sc.nextLine();
 			System.out.println("Introduzca apellido");
 			surname = sc.nextLine();
-			System.out.println("Introduzca fecha de nacimiento (dd/MM/yy)");
+			System.out.println("Introduzca fecha de nacimiento (dd/MM/yyyy)");
 			dateText = sc.nextLine();
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			birthdate = sdf.parse(dateText);
@@ -69,10 +69,9 @@ public class UserController {
 	
     public static License createLicense() throws ParseException {
     Scanner sc = new Scanner(System.in);
-    String id, fullName, expiringText;
+    String id, fullName, expiringDate;
     char type;
-    Date expiringDate;
-    
+        
     System.out.println("***Datos de Licencia***");
     System.out.println("Introduzca su ID");
     id = sc.nextLine();
@@ -81,10 +80,9 @@ public class UserController {
     sc.nextLine();
     System.out.println("Introduzca su nombre completo");
     fullName = sc.nextLine();
-    System.out.println("Introduzca la fecha de caducidad del ID (dd/MM/yy)");
-    expiringText = sc.nextLine();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	expiringDate = sdf.parse(expiringText);
+    System.out.println("Introduzca la fecha de caducidad del ID (dd/MM/yyyy)");
+    expiringDate = sc.nextLine();
+    
     
     License license = new License (id, type, fullName, expiringDate);	
     
@@ -110,5 +108,8 @@ public class UserController {
     	return lista;
     	
     }
-        
+ 
+    public static void addUser(Person person) {
+    	users.add(person);
+    }
 }

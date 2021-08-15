@@ -7,9 +7,9 @@ public class License {
 	protected String id;
 	protected char type;
 	protected String fullName;
-	protected Date expiringDate;
+	protected String expiringDate;
 	
-	public License(String id, char tipo, String fullName, Date expiringDate) {
+	public License(String id, char tipo, String fullName, String expiringDate) {
 		this.id           = id;
 		this.type         = tipo;
 		this.fullName     = fullName;
