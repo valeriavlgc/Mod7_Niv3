@@ -151,23 +151,23 @@ public class VehicleController {
 		return truck1;
 	}
 	
-	public static Bike createBike(String plate, String brand, String color, Owner owner) {
+	public static Bike createBike(String plate, String brand, String color, Owner owner) throws Exception {
 		String tipo = "bike";
 		
 		Bike bike1 = new Bike(plate, brand, color, owner);
 		
 		System.out.println("Información de rueda delantera:");
+		List<Wheel> bikeWheels = new ArrayList<Wheel>();
 		List<Wheel> frontWheel = new ArrayList<Wheel>();
 		frontWheel = WheelsInformation(tipo);
-		Wheel frontWheel1 = frontWheel.get(0);
-		bike1.addFrontWheel(frontWheel1);
-		
+		Wheel frontWheel1 = frontWheel.get(0); bikeWheels.add(frontWheel1);
+				
 		System.out.println("Información de rueda trasera:");
 		List<Wheel> backWheel = new ArrayList<Wheel>();
 		backWheel = WheelsInformation(tipo);
-		Wheel backWheel1 = backWheel.get(0);
-		bike1.addBackWheel(backWheel1);
+		Wheel backWheel1 = backWheel.get(0); bikeWheels.add(backWheel1);
 		
+		bike1.addWheels(bikeWheels);		
 		vehicles.add(bike1);
 		
 	    return bike1;
@@ -212,8 +212,10 @@ public class VehicleController {
 	
     public void getAllVehicles() {
     int i = 1;	
+    
 		for (Vehicle e : vehicles) {
 			System.out.println(i + ".-" + e.toString());
+			System.out.println(e.getPersons());
 			i++;
 		}
     }

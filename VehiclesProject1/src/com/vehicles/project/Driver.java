@@ -5,7 +5,7 @@ import java.util.Date;
 public class Driver extends Person {
 	
 	public Driver() {}
-	public Driver(String name, String surname, Date birthdate, License license) {
+	public Driver(String name, String surname, String birthdate, License license) {
 		super(name, surname, birthdate, license);
 	}
 		

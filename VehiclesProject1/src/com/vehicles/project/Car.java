@@ -4,8 +4,10 @@ import java.util.List;
 
 public class Car extends Vehicle {
 	
+		
 	public Car(String plate, String brand, String color, Owner owner) {
 		super(plate, brand, color, owner);
+		
 	}
 
 	public void addWheels(List<Wheel> frontWheels, List<Wheel> backWheels) throws Exception {
@@ -39,7 +41,7 @@ public class Car extends Vehicle {
 	  System.out.println(super.wheels.get(3));
    }
 	
-
+   
 	@Override
 	public String toString() {
 		return "Car [plate=" + plate + ", brand=" + brand + ", color=" + color +

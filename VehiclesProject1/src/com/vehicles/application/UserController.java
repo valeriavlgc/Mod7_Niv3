@@ -18,8 +18,7 @@ public class UserController {
 	
 	public static Owner createOwner() throws ParseException {
 	Scanner sc = new Scanner(System.in);
-	String name, surname, garage, insurance, dateText;
-	Date birthdate;
+	String name, surname, garage, insurance, birthdate;
 	License license;
 	
 		System.out.println("Introduzca nombre");
@@ -27,9 +26,7 @@ public class UserController {
 		System.out.println("Introduzca apellido");
 		surname = sc.nextLine();
 		System.out.println("Introduzca fecha de nacimiento (dd/MM/yyyy)");
-		dateText = sc.nextLine();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		birthdate = sdf.parse(dateText);
+		birthdate = sc.nextLine();
 		license = createLicense();
 		System.out.println("¿Tiene garaje?");
 		garage = sc.nextLine();
@@ -44,8 +41,7 @@ public class UserController {
  	
 	public static Driver createDriver() throws ParseException {
 	Scanner sc = new Scanner(System.in);
-	String name, surname, garage, insurance, dateText;
-	Date birthdate;
+	String name, surname, garage, insurance, birthdate;
 	License license;
 	
 	        System.out.println("****Datos del conductor****");
@@ -54,9 +50,7 @@ public class UserController {
 			System.out.println("Introduzca apellido");
 			surname = sc.nextLine();
 			System.out.println("Introduzca fecha de nacimiento (dd/MM/yyyy)");
-			dateText = sc.nextLine();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			birthdate = sdf.parse(dateText);
+			birthdate = sc.nextLine();
 			license = createLicense();
 		
 			

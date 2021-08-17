@@ -22,22 +22,45 @@ import com.vehicles.project.Wheel;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Date date1 = new Date(); Date date2 = new Date(); Date date3 = new Date(); Date date4 = new Date();
 		License license1= new License("234565L", 'a', "Valeria Lavin", "27/02/2025"); License license2 = new License ("23454545L", 'b', "Manuel José González", "21/02/2026"); 
 		License license3 = new License("23345L", 'c', "Eduardo Gómez", "27/03/2020"); License license4 = new License("277765L", 'c', "Rosa Díaz", "20/03/2035");
 		UserController usController = new UserController();
 		VehicleController vehicleController = new VehicleController();
 
-		Owner owner1 = new Owner("Valeria", "Lavín", date1, license1, "si", "no");
-		Owner owner2 = new Owner("Manuel José", "Gonzáliez", date2, license2, "si", "si");
-		Owner owner3 = new Owner("Eduardo", "Gómez", date3, license3, "no", "no");
-		Driver driver1 = new Driver("Rosa", "Diáz", date4, license4);
+		Owner owner1 = new Owner("Valeria", "Lavín", "12/04/1989", license1, "si", "no");
+		Owner owner2 = new Owner("Manuel José", "González", "13/02/1979", license2, "si", "si");
+		Owner owner3 = new Owner("Eduardo", "Gómez", "09/10/1959", license3, "no", "no");
+		Driver driver1 = new Driver("Rosa", "Diáz", "02/02/1976", license4);
 		usController.addUser(owner1); usController.addUser(owner2); usController.addUser(owner3); usController.addUser(driver1);
-		Bike bike1 = new Bike("1234LG", "Renault", "rojo", owner1);
+		
+		Bike bike1 = new Bike("1234LG", "Renault", "rojo", owner1); 
+		List<Wheel> wheels = new ArrayList<Wheel>();
+		Wheel frontWheel = new Wheel("goodyear", 1.2);
+		Wheel backWheel = new Wheel("goodyear", 1.2); 
+		wheels.add(frontWheel); wheels.add(backWheel); 
+		bike1.addWheels(wheels); 
+		
 		Car car1 = new Car("1234LG", "Renault", "rojo", owner2);
+		List<Wheel> wheelscar1 = new ArrayList<Wheel>();
+		List<Wheel> wheelscar2 = new ArrayList<Wheel>();
+		Wheel frontWheel1 = new Wheel("goodyear", 1.2);
+		Wheel backWheel1 = new Wheel("goodyear", 1.2); 
+		wheelscar1.add(frontWheel1); wheelscar1.add(frontWheel1); wheelscar2.add(backWheel1); wheelscar2.add(backWheel1);
+		car1.addWheels(wheelscar1, wheelscar2); 
+		
+		
 		Truck truck1 = new Truck("1234LG", "Renault", "rojo", owner3);	
-		bike1.addPerson(owner1); car1.addPerson(owner2); truck1.addPerson(owner3); bike1.addPerson(driver1);
-		vehicleController.addVehicle(bike1); vehicleController.addVehicle(car1); vehicleController.addVehicle(truck1);
+		List<Wheel> wheelstruck1 = new ArrayList<Wheel>();
+		List<Wheel> wheelstruck2 = new ArrayList<Wheel>();
+		Wheel frontWheel2 = new Wheel("goodyear", 1.2);
+		Wheel backWheel2 = new Wheel("goodyear", 1.2); 
+		wheelstruck1.add(frontWheel2); wheelstruck1.add(frontWheel2); wheelstruck2.add(backWheel2); wheelstruck2.add(backWheel2);
+		truck1.addWheels(wheelstruck1, wheelstruck2);
+		
+		bike1.addPerson(owner1);  truck1.addPerson(owner3); bike1.addPerson(driver1);
+		car1.addPerson(owner2);
+		vehicleController.addVehicle(bike1); vehicleController.addVehicle(car1);
+		vehicleController.addVehicle(truck1);
 		
 		Scanner sc = new Scanner(System.in);
 		int option; boolean fin = false;
@@ -153,7 +176,6 @@ int choice; char license;
 	String tipo = vehicles.get(choice-1).getClass().getName();
 	try {
 	driver.checkLicense(license, tipo);
-	//no iría abajo?
 	vehicles.get(choice-1).addPerson(driver);
 	} catch (Exception e) {
 		System.out.println("No se añadió al conductor por tener una licencia inadecuada.");

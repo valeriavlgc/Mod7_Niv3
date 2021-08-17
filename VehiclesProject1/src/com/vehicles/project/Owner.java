@@ -8,7 +8,7 @@ public class Owner extends Person {
 	protected String insurance;
 	
 	
-	public Owner(String name, String surname, Date birthdate, License license, String garage, String insurance) {
+	public Owner(String name, String surname, String birthdate, License license, String garage, String insurance) {
 		super(name, surname, birthdate, license);
 		this.garage    = garage; 
 		this.insurance = insurance;

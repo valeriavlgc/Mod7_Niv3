@@ -16,11 +16,31 @@ public class Vehicle {
 		this.plate = plate;
 		this.brand = brand;
 		this.color = color;
+		this.owner = owner;
 	}
 	
    public void addPerson(Person person) {
 	   persons.add(person);
 	   
    }
+   
+   //persons que viene tb el owner
+   public String getPersons() {
+	   String lista = "";
+
+   	for (Person e : persons) {
+   		lista += e + "\n";
+   	}
+  	
+   	return lista;
+   	
+   }
+
+@Override
+public String toString() {
+	return "Vehicle [plate=" + plate + ", brand=" + brand + ", color=" + color + ", wheels=" + wheels + ", owner="
+			+ owner + ", persons=" + persons + "]";
+}
+  
 	 	
 }

@@ -6,11 +6,11 @@ public class Person {
 
 	protected String name;
 	protected String surname;
-	protected Date birthdate;
+	protected String birthdate;
 	protected License license;
 	
 	public Person() {}
-	public Person(String name, String surname, Date birthdate, License license) {
+	public Person(String name, String surname, String birthdate, License license) {
 		this.name      = name;
 		this.surname   = surname;
 		this.birthdate = birthdate;
